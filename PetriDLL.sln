@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetriDLL", "PetriDLL\PetriDLL.csproj", "{7F986910-2834-48AD-8B6E-649822F3D14C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F986910-2834-48AD-8B6E-649822F3D14C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F986910-2834-48AD-8B6E-649822F3D14C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F986910-2834-48AD-8B6E-649822F3D14C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F986910-2834-48AD-8B6E-649822F3D14C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6BFEC281-8EEF-4AFB-A2B6-26904519A446}
+	EndGlobalSection
+EndGlobal
