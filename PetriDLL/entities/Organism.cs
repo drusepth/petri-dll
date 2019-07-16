@@ -10,10 +10,10 @@ namespace PetriDLL
         public int Epoch { get; set; } = 1;
 
         // Variables to mutate
-        public int DailyEnergy { get; set; } = 100;
-        public int DailyEnergyRemaining { get; set; } = 100;
-        public int MovementCost { get; set; } = 1;
-        public int MovementSpeed { get; set; } = 1; // Tiles moved in a single action
+        public float EnergyCapacity { get; set; } = 100f;
+        public float EnergyRemaining { get; set; } = 10f;
+        public float MovementCost { get; set; } = 1f;
+        public int MovementSpeed { get; set; } = 1; // Tiles that can be moved in a single epoch
         public MovementStyle MovementStrategy { get; set; }
 
         // Modifiers
@@ -27,8 +27,19 @@ namespace PetriDLL
         {
             Console.WriteLine("Ticking base Organism class");
             Epoch += 1;
+            EnergyRemaining -= 1;
+        }
 
-            DailyEnergyRemaining = DailyEnergy;
+        public void MoveTo(Tile destination)
+        {
+            float cost_to_move = Tile.DistanceTo(destination) * MovementCost;
+
+            Tile.Organisms.Remove(this);
+            destination.Organisms.Add(this);
+            Tile = destination;
+
+            EnergyRemaining -= cost_to_move;
+            Console.WriteLine("Energy remaining is now " + EnergyRemaining);
         }
     }
 }

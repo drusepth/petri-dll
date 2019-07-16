@@ -60,13 +60,13 @@ namespace PetriDLL
 
         public Tile RandomTile()
         {
-            return Tile(x: Environment.rng.Next(0, Width), y: Environment.rng.Next(0, Height));
+            return Tile(x: Environment.Rng.Next(0, Width), y: Environment.Rng.Next(0, Height));
         }
 
         public void Tick()
         {
             Console.WriteLine("Map ticking");
-            foreach (Organism organism in Organisms)
+            foreach (Organism organism in Organisms.ToArray())
             {
                 organism.Tick();
             }
@@ -95,6 +95,11 @@ namespace PetriDLL
                 }
                 Console.WriteLine();
             }
+        }
+
+        public int Size()
+        {
+            return Height * Width;
         }
     }
 }

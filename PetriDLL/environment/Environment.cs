@@ -8,7 +8,7 @@ namespace PetriDLL
         public int Epoch { get; set; } = 1;
         public Map Map { get; set; }
 
-        public Random rng { get; set; } = new Random();
+        public Random Rng { get; set; } = new Random();
 
         public Environment()
         {
@@ -22,6 +22,7 @@ namespace PetriDLL
             Map.PrintConsoleRepresentation();
         }
 
+        #region Spawning
         public void Spawn(Organism organism, int x, int y)
         {
             Console.WriteLine("Spawning organism " + organism.TextRepresentation + " at " + x + ", " + y);
@@ -32,6 +33,13 @@ namespace PetriDLL
         {
             Spawn(organism, tile.X, tile.Y);
         }
+
+        public void Despawn(Organism organism)
+        {
+            Map.Organisms.Remove(organism);
+            organism.Tile.Organisms.Remove(organism);
+        }
+        #endregion
 
         public void Tick()
         {

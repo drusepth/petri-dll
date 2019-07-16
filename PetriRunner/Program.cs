@@ -5,7 +5,7 @@ namespace PetriRunner
 {
     class Program
     {
-        static int MINIMUM_PETRI_POPULATION = 5;
+        static int MINIMUM_PETRI_POPULATION = 10;
         static Random rng = new Random();
 
         static void Main(string[] args)

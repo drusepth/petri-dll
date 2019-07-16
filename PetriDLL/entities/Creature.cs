@@ -19,6 +19,23 @@ namespace PetriDLL
 
             Console.WriteLine("Moving creature...");
             MovementStrategy.Move();
+
+            CheckDeath();
+        }
+
+        public void CheckDeath()
+        {
+            Console.WriteLine("Energy remaining: " + EnergyRemaining);
+            if (EnergyRemaining <= 0)
+            {
+                Console.WriteLine("Death!");
+                Die();
+            }
+        }
+
+        public void Die()
+        {
+            Tile.Map.Environment.Despawn(this);
         }
     }
 }

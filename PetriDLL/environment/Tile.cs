@@ -28,13 +28,13 @@ namespace PetriDLL
             Console.WriteLine("Map now holds " + Map.Organisms.Count + " organisms.");
             organism.Tile = this;
 
-            Console.WriteLine("Tile " + X + ", " + Y + " now has " + Organisms.Count + "organisms");
+            Console.WriteLine("Tile " + X + ", " + Y + " now has " + Organisms.Count + " organism(s)");
         }
 
         public float DistanceTo(Tile other_tile)
         {
             // todo decide tile or crow distance
-            return 0;
+            return Math.Abs(X - other_tile.X) + Math.Abs(Y - other_tile.Y);
         }
     }
 }
