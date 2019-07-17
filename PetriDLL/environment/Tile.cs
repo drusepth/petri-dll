@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PetriDLL.entities;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PetriDLL
@@ -11,7 +13,7 @@ namespace PetriDLL
         public Map Map { get; set; }
         // TODO Z
 
-        public List<Organism> Organisms { get; set; } = new List<Organism>();
+        public List<Entity> Entities { get; set; } = new List<Entity>();
 
         public Tile(int x, int y, Map back_reference)
         {
@@ -21,20 +23,25 @@ namespace PetriDLL
             Map = back_reference;
         }
 
-        public void Spawn(Organism organism)
+        public void Spawn(Entity entity)
         {
-            Organisms.Add(organism);
-            Map.Organisms.Add(organism);
-            Console.WriteLine("Map now holds " + Map.Organisms.Count + " organisms.");
-            organism.Tile = this;
+            Entities.Add(entity);
+            Map.Entities.Add(entity);
+            Console.WriteLine("Map now holds " + Map.Entities.Count + " entities.");
+            entity.Tile = this;
 
-            Console.WriteLine("Tile " + X + ", " + Y + " now has " + Organisms.Count + " organism(s)");
+            Console.WriteLine("Tile " + X + ", " + Y + " now has " + Entities.Count + " organism(s)");
         }
 
         public float DistanceTo(Tile other_tile)
         {
             // todo decide tile or crow distance
             return Math.Abs(X - other_tile.X) + Math.Abs(Y - other_tile.Y);
+        }
+
+        public List<Entity> EntitiesOf(Type type_selector)
+        {
+            return Entities.Where(organism => organism.GetType() == type_selector).ToList<Entity>();
         }
     }
 }

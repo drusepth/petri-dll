@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PetriDLL.entities;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PetriDLL
 {
@@ -23,21 +25,21 @@ namespace PetriDLL
         }
 
         #region Spawning
-        public void Spawn(Organism organism, int x, int y)
+        public void Spawn(Entity entity, int x, int y)
         {
-            Console.WriteLine("Spawning organism " + organism.TextRepresentation + " at " + x + ", " + y);
-            Map.Tile(x, y).Spawn(organism);
+            Console.WriteLine("Spawning entity " + entity.TextRepresentation + " at " + x + ", " + y);
+            Map.Tile(x, y).Spawn(entity);
         }
 
-        public void Spawn(Organism organism, Tile tile)
+        public void Spawn(Entity entity, Tile tile)
         {
-            Spawn(organism, tile.X, tile.Y);
+            Spawn(entity, tile.X, tile.Y);
         }
 
-        public void Despawn(Organism organism)
+        public void Despawn(Entity entity)
         {
-            Map.Organisms.Remove(organism);
-            organism.Tile.Organisms.Remove(organism);
+            Map.Entities.Remove(entity);
+            entity.Tile.Entities.Remove(entity);
         }
         #endregion
 
@@ -50,7 +52,12 @@ namespace PetriDLL
 
         public int Population()
         {
-            return Map.Organisms.Count;
+            return Map.Entities.Count;
+        }
+
+        public int Population(Type type_selector)
+        {
+            return Map.Entities.Where(organism => organism.GetType() == type_selector).ToArray<Entity>().Count<Entity>();
         }
    
     }

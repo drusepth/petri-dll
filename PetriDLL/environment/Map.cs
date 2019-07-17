@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetriDLL.entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,7 +14,7 @@ namespace PetriDLL
         public List<List<Tile>> Tiles { get; set; } = new List<List<Tile>>();
 
         // Reference caches
-        public List<Organism> Organisms { get; set; } = new List<Organism>();
+        public List<Entity> Entities { get; set; } = new List<Entity>();
 
         public Map(Environment env, int height = 5, int width = 5)
         {
@@ -66,9 +67,9 @@ namespace PetriDLL
         public void Tick()
         {
             Console.WriteLine("Map ticking");
-            foreach (Organism organism in Organisms.ToArray())
+            foreach (Entity entity in Entities.ToArray())
             {
-                organism.Tick();
+                entity.Tick();
             }
         }
 
@@ -80,13 +81,13 @@ namespace PetriDLL
                 {
                     Tile tile = Tiles[y][x];
 
-                    if (tile.Organisms.Count == 1)
+                    if (tile.Entities.Count == 1)
                     {
-                        Console.Write("[" + tile.Organisms[0].TextRepresentation + "]");
+                        Console.Write("[" + tile.Entities[0].TextRepresentation + "]");
                     }
-                    else if (tile.Organisms.Count > 1)
+                    else if (tile.Entities.Count > 1)
                     {
-                        Console.Write("[" + tile.Organisms.Count + "]");
+                        Console.Write("[" + tile.Entities.Count + "]");
                     }
                     else
                     {
