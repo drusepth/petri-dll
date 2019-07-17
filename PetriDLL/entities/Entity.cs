@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetriDLL.lib;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,7 +15,7 @@ namespace PetriDLL.entities
 
         public virtual void Tick()
         {
-            Console.WriteLine("Ticking base Entity class");
+            Debug.Log("Ticking base Entity class", "ENTITY");
             Epoch += 1;
         }
 

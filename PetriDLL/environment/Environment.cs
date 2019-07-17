@@ -1,4 +1,5 @@
 ﻿using PetriDLL.entities;
+using PetriDLL.lib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace PetriDLL
 
         public Environment()
         {
-            Console.WriteLine("Initializing env");
+            Debug.Log("Initializing env", "ENVIRONMENT");
             Map = new Map(env: this, height: 10, width: 20);
         }
 
@@ -27,7 +28,7 @@ namespace PetriDLL
         #region Spawning
         public void Spawn(Entity entity, int x, int y)
         {
-            Console.WriteLine("Spawning entity " + entity.TextRepresentation + " at " + x + ", " + y);
+            Debug.Log("Spawning entity " + entity.TextRepresentation + " at " + x + ", " + y, "SPAWN");
             Map.Tile(x, y).Spawn(entity);
         }
 

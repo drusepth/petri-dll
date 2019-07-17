@@ -44,13 +44,12 @@ namespace PetriDLL
         {
             EnergyRemaining -= FoodProductionEnergyCost;
 
-            Console.WriteLine("Producing fruit");
+            Debug.Log("Producing fruit", "FOOD");
             Food fruit = new Food {
                 EnergyProvided = FoodEnergyProvided,
                 TextRepresentation = 'o'
             };
 
-            Debug.Log("Spawning a fruit", "SPAWN");
             Tile.Map.Environment.Spawn(fruit, Tile);
         }
     }

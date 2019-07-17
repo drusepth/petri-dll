@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetriDLL.lib;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,6 +9,7 @@ namespace PetriDLL.entities.items
     {
         // Variables to mutate
         public float EnergyProvided { get; set; } = 10f;
+        public float EnergyDecay { get; set; } = 0.5f;
         public int DecayTime { get; set; } = 10;
 
         public Food() { }
@@ -16,13 +18,16 @@ namespace PetriDLL.entities.items
         {
             base.Tick();
 
+            EnergyProvided -= EnergyDecay;
+
             CheckDeath();
         }
 
         private void CheckDeath()
         {
-            if (Epoch > DecayTime)
+            if (Epoch > DecayTime || EnergyProvided <= 0f)
             {
+                Debug.Log("Fruit despawn", "DEATH");
                 Despawn();
             }
         }

@@ -1,5 +1,6 @@
 ﻿using PetriDLL.entities;
 using PetriDLL.entities.decisions.movement;
+using PetriDLL.lib;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -34,16 +35,14 @@ namespace PetriDLL
             Tile = destination;
 
             EnergyRemaining -= cost_to_move;
-            Console.WriteLine("Energy remaining is now " + EnergyRemaining);
+            Debug.Log("Energy remaining after movement is now " + EnergyRemaining, "MOVEMENT");
         }
-
 
         public void CheckDeath()
         {
-            Console.WriteLine("Energy remaining: " + EnergyRemaining);
             if (EnergyRemaining <= 0)
             {
-                Console.WriteLine("Death!");
+                Debug.Log("Creature death!", "CREATURE");
                 Despawn();
             }
         }

@@ -1,4 +1,5 @@
 ﻿using PetriDLL.entities;
+using PetriDLL.lib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,15 +28,14 @@ namespace PetriDLL
         {
             Entities.Add(entity);
             Map.Entities.Add(entity);
-            Console.WriteLine("Map now holds " + Map.Entities.Count + " entities.");
+            Debug.Log("Map now holds " + Map.Entities.Count + " entities.", "SPAWN");
             entity.Tile = this;
 
-            Console.WriteLine("Tile " + X + ", " + Y + " now has " + Entities.Count + " organism(s)");
+            Debug.Log("Tile " + X + ", " + Y + " now has " + Entities.Count + " organism(s)", "SPAWN");
         }
 
         public float DistanceTo(Tile other_tile)
         {
-            // todo decide tile or crow distance
             return Math.Abs(X - other_tile.X) + Math.Abs(Y - other_tile.Y);
         }
 

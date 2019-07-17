@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetriDLL.lib;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -21,8 +22,6 @@ namespace PetriDLL.entities.decisions.movement
  
             if (Organism.MovementCost < Organism.EnergyRemaining)
             {
-                Console.WriteLine("Moving");
-
                 int x = Organism.Tile.X, y = Organism.Tile.Y;
                 Random rng = Environment.Rng;
 
@@ -30,12 +29,12 @@ namespace PetriDLL.entities.decisions.movement
                     x: rng.Next(x - Organism.MovementSpeed, x + Organism.MovementSpeed + 1),
                     y: rng.Next(y - Organism.MovementSpeed, y + Organism.MovementSpeed + 1));
 
-                Console.WriteLine("Moving from " + x + ", " + y + " to " + new_tile.X + ", " + new_tile.Y);
+                Debug.Log("Moving from " + x + ", " + y + " to " + new_tile.X + ", " + new_tile.Y, "MOVEMENT");
                 Organism.MoveTo(new_tile);
             }
             else
             {
-                Console.WriteLine("Not enough energy to move creature");
+                Debug.Log("Not enough energy to move creature", "MOVEMENT");
             }
         }
     }

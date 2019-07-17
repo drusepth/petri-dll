@@ -22,7 +22,7 @@ namespace PetriDLL
         {
             base.Tick();
 
-            Console.WriteLine("Moving creature...");
+            Debug.Log("Moving creature in tick...", "MOVEMENT");
             MovementStrategy.Move();
 
             CheckFood();
@@ -36,12 +36,12 @@ namespace PetriDLL
             foreach (Food food in food_available.ToArray()) {
                 if (EnergyRemaining + HungerThreshold > EnergyCapacity)
                 {
-                    Debug.Log("Food is available but creature is not hungry.", "CREATURE");
+                    Debug.Log("Food is available but creature is not hungry.", "EATING");
                     break;
                 }
 
                 // Eat it!
-                Debug.Log("Eating food", "CREATURE");
+                Debug.Log("Eating food", "EATING");
                 float energy_from_food = food.EnergyProvided * EnergyExtractionEfficiency;
                 EnergyRemaining = Math.Min(EnergyRemaining + energy_from_food, EnergyCapacity);
                 food.Despawn();

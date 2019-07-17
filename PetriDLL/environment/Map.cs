@@ -1,4 +1,5 @@
 ﻿using PetriDLL.entities;
+using PetriDLL.lib;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -31,7 +32,7 @@ namespace PetriDLL
             }
 
             // Create the tiles
-            Console.WriteLine("Initializing map with Height=" + Height + ", Width=" + Width);
+            Debug.Log("Initializing map with Height=" + Height + ", Width=" + Width, "MAP");
             for (int y = 0; y < Height; y++)
             {
                 Tiles.Add(new List<Tile>());
@@ -66,7 +67,7 @@ namespace PetriDLL
 
         public void Tick()
         {
-            Console.WriteLine("Map ticking");
+            Debug.Log("Map ticking", "MAP");
             foreach (Entity entity in Entities.ToArray())
             {
                 entity.Tick();
