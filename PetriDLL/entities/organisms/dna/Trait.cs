@@ -4,6 +4,7 @@ using System.Text;
 
 namespace PetriDLL
 {
+    [Serializable]
     public class Trait
     {
         public Trait()

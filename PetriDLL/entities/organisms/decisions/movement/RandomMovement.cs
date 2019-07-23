@@ -5,6 +5,7 @@ using System.Text;
 
 namespace PetriDLL.entities.decisions.movement
 {
+    [Serializable]
     public class RandomMovement : MovementStyle
     {
         public Environment Environment { get; set; }

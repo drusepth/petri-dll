@@ -5,12 +5,17 @@ using System.Text;
 
 namespace PetriDLL.entities
 {
+    [Serializable]
     public abstract class Entity
     {
+        public Guid Identifier { get; } = Guid.NewGuid();
+
         public int Epoch { get; set; } = 1;
 
         public char TextRepresentation { get; set; } = '?';
 
+        public Environment Environment { get; set; }
+        public Map Map { get; set; }
         public Tile Tile { get; set; }
 
         public virtual void Tick()

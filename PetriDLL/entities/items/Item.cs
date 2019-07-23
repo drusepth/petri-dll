@@ -4,6 +4,7 @@ using System.Text;
 
 namespace PetriDLL.entities.items
 {
+    [Serializable]
     public abstract class Item : Entity
     {
     }

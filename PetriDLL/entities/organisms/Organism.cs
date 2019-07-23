@@ -1,5 +1,6 @@
 ﻿using PetriDLL.entities;
 using PetriDLL.entities.decisions.movement;
+using PetriDLL.entities.organisms.reproduction;
 using PetriDLL.lib;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Text;
 
 namespace PetriDLL
 {
+    [Serializable]
     public abstract class Organism : Entity
     {
         // Variables to mutate
@@ -14,7 +16,9 @@ namespace PetriDLL
         public float EnergyRemaining { get; set; } = 100f;
         public float MovementCost { get; set; } = 1f;
         public int MovementSpeed { get; set; } = 1; // Tiles that can be moved in a single epoch
+
         public MovementStyle MovementStrategy { get; set; }
+        public ReproductionStyle ReproductionStrategy { get; set; }
 
         // Modifiers
         List<Trait> Traits { get; set; } = new List<Trait>();
@@ -22,6 +26,7 @@ namespace PetriDLL
         public override void Tick()
         {
             base.Tick();
+            Debug.Log("Ticking organism " + Identifier);
     
             EnergyRemaining -= 1;
         }
@@ -29,9 +34,6 @@ namespace PetriDLL
         public void MoveTo(Tile destination)
         {
             float cost_to_move = Tile.DistanceTo(destination) * MovementCost;
-
-            Tile.Entities.Remove(this);
-            destination.Entities.Add(this);
             Tile = destination;
 
             EnergyRemaining -= cost_to_move;
@@ -42,7 +44,7 @@ namespace PetriDLL
         {
             if (EnergyRemaining <= 0)
             {
-                Debug.Log("Creature death!", "CREATURE");
+                Debug.Log("Triggering creature death!", "DEATH");
                 Despawn();
             }
         }

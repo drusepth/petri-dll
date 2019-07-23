@@ -16,7 +16,11 @@ namespace PetriDLL.lib
                 "FOOD",
                 "DEATH",
                 "MAP",
-                "ENVIRONMENT"
+                "ENVIRONMENT",
+                "REPRODUCTION",
+
+                "ERROR",
+                "SMELL"
             };
 
             if (active_channels.IndexOf(channel) > -1)

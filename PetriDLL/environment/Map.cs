@@ -2,10 +2,12 @@
 using PetriDLL.lib;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PetriDLL
 {
+    [Serializable]
     public class Map
     {
         public Environment Environment { get; set; }
@@ -81,14 +83,15 @@ namespace PetriDLL
                 for (int x = 0; x < Width; x++)
                 {
                     Tile tile = Tiles[y][x];
+                    List<Entity> tile_entities = tile.Entities();
 
-                    if (tile.Entities.Count == 1)
+                    if (tile_entities.Count == 1)
                     {
-                        Console.Write("[" + tile.Entities[0].TextRepresentation + "]");
+                        Console.Write("[" + tile_entities[0].TextRepresentation + "]");
                     }
-                    else if (tile.Entities.Count > 1)
+                    else if (tile.Entities().Count > 1)
                     {
-                        Console.Write("[" + tile.Entities.Count + "]");
+                        Console.Write("[" + tile_entities.Count + "]");
                     }
                     else
                     {
@@ -97,6 +100,11 @@ namespace PetriDLL
                 }
                 Console.WriteLine();
             }
+        }
+
+        public List<Entity> EntitiesOf(Type type_selector)
+        {
+            return Entities.Where(organism => organism.GetType() == type_selector).ToList<Entity>();
         }
 
         public int Size()

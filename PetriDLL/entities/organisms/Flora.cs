@@ -4,6 +4,7 @@ using System;
 
 namespace PetriDLL
 {
+    [Serializable]
     public class Flora : Organism
     {
         // Variables to mutate

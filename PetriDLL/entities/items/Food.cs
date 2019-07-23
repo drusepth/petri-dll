@@ -5,6 +5,7 @@ using System.Text;
 
 namespace PetriDLL.entities.items
 {
+    [Serializable]
     public class Food : Item
     {
         // Variables to mutate
